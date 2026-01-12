@@ -1,0 +1,28 @@
+let total = 0; // keeps track of total expense
+
+function addExpense() {
+    const amountInput = document.getElementById('amount');
+    const categoryInput = document.getElementById('category');
+    const expenseList = document.getElementById('expenseList');
+    const totalDisplay = document.getElementById('total');
+
+    const amount = parseFloat(amountInput.value);
+    const category = categoryInput.value;
+
+    if (isNaN(amount) || amount <= 0) {
+        alert("Please enter a valid amount");
+        return;
+    }
+
+    // Create a new list item
+    const li = document.createElement('li');
+    li.textContent = `${category}: ₹${amount.toFixed(2)}`;
+    expenseList.appendChild(li);
+
+    // Update total
+    total += amount;
+    totalDisplay.textContent = total.toFixed(2);
+
+    // Clear input for next entry
+    amountInput.value = '';
+}
